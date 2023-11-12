@@ -9,26 +9,40 @@ num2: .byte 0
 .globl main
 .ent main
 main:
-li $v0,4     
-la $a0,msg1  
-syscall
-lb $v0,num1
-li $v0,5
-syscall
-move $t0,$v0    
-li $v0,4
-la $a0,msg2
-syscall
-lb $v0,num2
-li $v0,5
-syscall
-move $t1,$v0
-li $v0,4
-la $a0,msg3
-syscall
-add $t2,$t1,$t0
-li $v0,1
-move $a0,$t2
-syscall
-li $v0,10
-syscall
+    #msg1
+    li $v0,4     
+    la $a0,msg1  
+    syscall
+
+    #scan num1
+    lb $v0,num1
+    li $v0,5
+    syscall
+
+    #msg2
+    move $t0,$v0    
+    li $v0,4
+    la $a0,msg2
+    syscall
+
+    #scan num2
+    lb $v0,num2
+    li $v0,5
+    syscall
+
+    #msg3
+    move $t1,$v0
+    li $v0,4
+    la $a0,msg3
+    syscall
+
+    # num1+num2
+    add $t2,$t1,$t0
+    # print reslta
+    li $v0,1
+    move $a0,$t2
+    syscall
+
+    li $v0,10
+    syscall
+.end main
